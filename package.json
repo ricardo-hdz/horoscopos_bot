@@ -1,0 +1,27 @@
+{
+  "name": "horoscopos_bot",
+  "version": "1.0.0",
+  "description": "A Telegram Bot to provide you the daily horoscope",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricardo-hdz/horoscopos_bot.git"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "horoscopo"
+  ],
+  "author": "Ricardo Hdz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ricardo-hdz/horoscopos_bot/issues"
+  },
+  "homepage": "https://github.com/ricardo-hdz/horoscopos_bot#readme",
+  "dependencies": {
+    "claudia-bot-builder": "^1.4.0"
+  }
+}
