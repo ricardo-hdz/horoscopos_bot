@@ -48,4 +48,58 @@ describe('Data Helper', function() {
             });
         });
     });
+
+    describe('Utilities ', function() {
+
+        it('returns sign is valid', function() {
+            var value = helper.isSignValid('Acuario');
+            return assert.equal(value, true);
+        });
+
+        it('returns sign is invalid', function() {
+            var value = helper.isSignValid('random');
+            return assert.equal(value, false);
+        });
+
+        it('returns correct predict signs with one letter', function() {
+            var value = helper.predictSigns('a');
+            return assert.deepEqual(value,  ['acuario', 'aries']);
+        });
+
+        it('returns correct predict signs with sign', function() {
+            var value = helper.predictSigns('acuario');
+            return assert.deepEqual(value,  ['acuario', 'aries']);
+        });
+
+        it('returns empty signs with empty string', function() {
+            var value = helper.predictSigns('');
+            return assert.deepEqual(value,  []);
+        });
+
+        it('returns empty signs with empty object', function() {
+            var value = helper.predictSigns();
+            return assert.deepEqual(value,  []);
+        });
+
+        it('returns correct inline suggestion', function() {
+            var inlineSuggestion = helper.getInlineSuggestions('piscis', {'update_id': '123'});
+            var expected = {
+                'type': 'article',
+                'id': '123',
+                'title': 'Piscis',
+                'input_message_content': {
+                    'message_text': '<b>Piscis</b>',
+                    'parse_mode': 'HTML'
+                },
+                'description': 'Horoscopo del dia para Piscis'
+            };
+            return assert.deepEqual(inlineSuggestion, [expected]);
+        });
+
+        it('returns empty inline suggestion', function() {
+            var inlineSuggestion = helper.getInlineSuggestions('random', {'update_id': '123'});
+            return assert.deepEqual(inlineSuggestion, []);
+        });
+
+    });
 });

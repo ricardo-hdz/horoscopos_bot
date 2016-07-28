@@ -17,6 +17,4 @@ var app = function() {
     };
 };
 
-app().requestDailyHoroscope();
-
 module.exports = app;
