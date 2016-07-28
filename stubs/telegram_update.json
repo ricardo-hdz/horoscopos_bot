@@ -1,0 +1,22 @@
+{
+  "update_id": 321244386,
+  "message": {
+    "message_id": 7,
+    "from": {
+      "id": 55303605,
+      "first_name": "Ricardo",
+      "last_name": "Hernandez",
+      "username": "ricardohdz"
+    },
+    "chat": {
+      "id": 55303605,
+      "first_name": "Ricardo",
+      "last_name": "Hernandez",
+      "username": "ricardohdz",
+      "type": "private"
+    },
+    "date": 1469727106,
+    "text": "hey"
+  },
+  "inlineQuery": {}
+}

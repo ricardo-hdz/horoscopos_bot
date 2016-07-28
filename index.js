@@ -8,9 +8,7 @@ var app = function() {
     var dataHelper = new DataHelper();
     var requestDailyHoroscope = function() {
         dataHelper.requestDailyHoroscope().then(function(response) {
-            // console.log(JSON.stringify(response));
             return response;
-            // JSON.parse(response);
         });
     };
 

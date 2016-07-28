@@ -1,0 +1,11 @@
+{
+  "lambda": {
+    "role": "horoscopos_bot-executor",
+    "name": "horoscopos_bot",
+    "region": "us-east-1"
+  },
+  "api": {
+    "id": "kubuyq8sth",
+    "module": "bot"
+  }
+}
