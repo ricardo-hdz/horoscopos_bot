@@ -6,6 +6,7 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 var assert = chai.assert;
 var DataHelper = require('../data_helper');
+var HandlerHelper = require('../handler_helper');
 chai.config.includeStack = true;
 
 describe('Data Helper', function() {
@@ -101,5 +102,67 @@ describe('Data Helper', function() {
             return assert.deepEqual(inlineSuggestion, []);
         });
 
+    });
+});
+
+describe('Handler Helper', function() {
+    var helper = new HandlerHelper();
+    var message = {
+        'text': 'Hello',
+        'originalRequest': {
+            'message': true
+        }
+    };
+    it('returns correct message for chat message', function() {
+        var result = helper.handleRequest(message);
+        return assert.equal(result, 'Hello');
+    });
+    it('returns correct inlineRequest for inline message', function() {
+        message.text = 'Piscis';
+        message.originalRequest = {
+            'inline_query': true,
+            'update_id': '123'
+        };
+        var expected = [{
+            'type': 'article',
+            'id': '123',
+            'title': 'Piscis',
+            'input_message_content': {
+                'message_text': '<b>' + 'Piscis' + '</b>',
+                'parse_mode': 'HTML'
+            },
+            'description': 'Horoscopo del dia para Piscis'
+        }];
+        var result = helper.handleRequest(message);
+        return assert.eventually.deepEqual(result, expected);
+    });
+    it('returns correct inlineRequest for inline message with single char', function() {
+        message.text = 'p';
+        message.originalRequest = {
+            'inline_query': true,
+            'update_id': '123'
+        };
+        var expected = [{
+            'type': 'article',
+            'id': '123',
+            'title': 'Piscis',
+            'input_message_content': {
+                'message_text': '<b>' + 'Piscis' + '</b>',
+                'parse_mode': 'HTML'
+            },
+            'description': 'Horoscopo del dia para Piscis'
+        }];
+        var result = helper.handleRequest(message);
+        return expect(result).to.eventually.deep.eq(expected);
+        // return assert.eventually.deepEqual(result, expected);
+    });
+    it('returns empty inlineRequest for inline message with invalid sign', function() {
+        message.text = 'z';
+        message.originalRequest = {
+            'inline_query': true,
+            'update_id': '123'
+        };
+        var result = helper.handleRequest(message);
+        return expect(result).to.eventually.deep.eq([]);
     });
 });
