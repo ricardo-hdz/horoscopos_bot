@@ -1,6 +1,10 @@
 # Horoscopos Bot
 A Telegram Bot to provide you the daily horoscope (spanish only)
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ricardo-hdz/horoscopos_bot/master/horoscoposbot.png" width="400"/>
+</p>
+
 ## Installation & Run
 
 ```
